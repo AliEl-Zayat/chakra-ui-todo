@@ -1,13 +1,5 @@
-import {
-  Badge,
-  HStack,
-  IconButton,
-  Spacer,
-  StackDivider,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { FaTrash } from "react-icons/fa";
+import { Badge, StackDivider, VStack } from "@chakra-ui/react";
+import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, deleteTodo }) => {
   if (!todos.length) {
@@ -28,17 +20,7 @@ const TodoList = ({ todos, deleteTodo }) => {
       maxW={{ base: "90vw", sm: "80vw", lg: "50vw", xl: "40vw" }}
       alignItems="stretch"
     >
-      {todos.map((todo) => (
-        <HStack key={todo.id}>
-          <Text fontFamily="Quicksand">{todo.text}</Text>
-          <Spacer />
-          <IconButton
-            icon={<FaTrash />}
-            isRound
-            onClick={() => deleteTodo(todo.id)}
-          />
-        </HStack>
-      ))}
+      {<TodoItem todos={todos} deleteTodo={deleteTodo} />}
     </VStack>
   );
 };
